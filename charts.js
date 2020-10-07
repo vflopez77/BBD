@@ -4,6 +4,7 @@ function init() {
 
   // Use the list of sample names to populate the select options
   d3.json("samples.json").then((data) => {
+    console.log(data);
     var sampleNames = data.names;
 
     sampleNames.forEach((sample) => {
@@ -54,7 +55,7 @@ function buildMetadata(sample) {
   });
 }
 
-// 1. Create the buildCharts function.
+// // 1. Create the buildCharts function.
 // function buildCharts(sample) {
 //   // 2. Use d3.json to load and retrieve the samples.json file 
 //   d3.json("samples.json").then((data) => {
