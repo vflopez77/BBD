@@ -10,11 +10,17 @@ function init() {
         .text(sample)
         .property("value", sample);
     });
+
+    // Use the first sample from the list to build the initial plots
+    var firstSample = sampleNames[0];
+    buildMetadata(firstSample);
+    // buildCharts(firstSample);
+    
 })}
 
 function optionChanged(newSample) {
   buildMetadata(newSample);
-  buildCharts(newSample);
+  // buildCharts(newSample);
 }
 
 function buildMetadata(sample) {
