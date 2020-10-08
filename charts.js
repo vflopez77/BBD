@@ -80,13 +80,14 @@ function buildCharts(sample) {
 
     //sortedSamples = sample_values.sort((a, b) => b - a)
     var yticks = otu_ids.slice(0,10);
-    yticks = yticks.map(id => id.toString());
-    var xticks = sample_values.slice(0,10);
+    var xticks = "OTU " + sample_values.slice(0,10);
     console.log(yticks);
     // 8. Create the trace for the bar chart. 
     var barData = {
         x: xticks,
         y: yticks,
+        text: otu_labels.slice(0, 10),
+        name: "Top 10 Bacteria Cultures Found",
         type: "bar",
         orientation: "h"
     };
