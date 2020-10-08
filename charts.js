@@ -70,7 +70,7 @@ function buildCharts(sample) {
     otu_ids = result.otu_ids;
     otu_labels = result.otu_labels;
     sample_values = result.sample_values
-    console.log("otu_id: " + otu_ids);
+    console.log("otu_ids: " + otu_ids);
     console.log("otu_labels: " + otu_labels);
     console.log("sample_values: " + sample_values)
 
