@@ -70,9 +70,9 @@ function buildCharts(sample) {
     otu_ids = result.otu_ids;
     otu_labels = result.otu_labels;
     sample_values = result.sample_values
-    //console.log("otu_id: " + otu_id);
-    //console.log("otu_labels: " + otu_labels);
-    //console.log("sample_values: " + sample_values)
+    console.log("otu_id: " + otu_id);
+    console.log("otu_labels: " + otu_labels);
+    console.log("sample_values: " + sample_values)
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
@@ -80,6 +80,7 @@ function buildCharts(sample) {
 
     //sortedSamples = sample_values.sort((a, b) => b - a)
     var yticks = otu_ids.slice(0,10);
+    yticks = yticks.map(id => id.toString());
     var xticks = sample_values.slice(0,10);
     console.log(yticks);
     // 8. Create the trace for the bar chart. 
