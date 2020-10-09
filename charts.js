@@ -86,7 +86,7 @@ function buildCharts(sample) {
     var barData = {
         x: xticks,
         y: yticks,
-        text: otu_ids.slice(0, 10),
+        text: otu_labels.slice(0, 10),
         name: "Top 10 Bacteria Cultures Found",
         type: "bar",
         orientation: "h"
