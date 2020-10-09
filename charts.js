@@ -4,7 +4,7 @@ function init() {
 
   // Use the list of sample names to populate the select options
   d3.json("samples.json").then((data) => {
-    console.log(data);
+    //console.log(data);
     var sampleNames = data.names;
 
     sampleNames.forEach((sample) => {
@@ -51,9 +51,10 @@ function buildMetadata(sample) {
     Object.entries(result).forEach(([key, value]) => {
       PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
-    console.log(result);
+    
+    // Get frequency for gauge chart
     wfrequency = result.wfreq;
-    console.log(wfrequency);
+
   });
 }
 
@@ -71,7 +72,7 @@ function buildCharts(sample) {
     //  5. Create a variable that holds the first sample in the array.
     var result = resultArray[0];
     console.log(result);
-
+  
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
     otu_ids = result.otu_ids;
     otu_labels = result.otu_labels;
@@ -112,8 +113,8 @@ function buildCharts(sample) {
       type: 'scatter',
       mode: 'markers',
       marker: { size: sample_values,
-                color: otu_ids,
-                colorscale: [[0, 'rgb(79, 79, 164)'], [1, 'rgb(212, 200, 186)']]
+                color: otu_ids
+                //colorscale: [[0, 'rgb(79, 79, 164)'], [1, 'rgb(212, 200, 186)']]
                 //colorscale: [[0, 'rgb(66, 27, 148)'], [1, 'rgb(212, 202, 187)']]
                 //colorscale: [[0, 'rgb(88, 0, 148)'], [1, 'rgb(137, 207, 176)'], [2, 'rgb(201, 231, 135)'], [3, 'rgb(212, 202, 187)']]
               
@@ -131,27 +132,21 @@ function buildCharts(sample) {
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
     // 4. Create the trace for the gauge chart.
-    console.log(wfrequency);
     var gaugeData = [{
       value: wfrequency,
-      title: { text: "Belly Button Washing Frequency" },
-      subtitle: { text: "Scrubs per Week"},
+      title: { text: "<b>Belly Button Washing Frequency</b><br>Scrubs per Week" },
       type: "indicator",
-      mode: "gauge+number+delta",
+      mode: "gauge+number",
       gauge: {
         axis: { range: [null, 10]},
+        bar: { color: "black" },
         steps: [
           { range: [0, 2], color: "red"},
           { range: [2, 4], color: "orange"},
           { range: [4, 6], color: "yellow"},
           { range: [6, 8], color: "lightgreen"},
           { range: [8, 10], color: "green"}
-        ],
-        threshold: {
-          line: { color: "red", width: 4},
-          thickness: 0.75,
-          value: 2
-        }
+        ]
       
       }
 
@@ -159,7 +154,7 @@ function buildCharts(sample) {
     
     // 5. Create the layout for the gauge chart.
     var gaugeLayout = { 
-      width: 600,
+      width: 500,
       height: 450,
       margin: { t: 0, b: 0 }
     };
