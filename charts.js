@@ -113,7 +113,10 @@ function buildCharts(sample) {
       mode: 'markers',
       marker: { size: sample_values,
                 color: otu_ids,
-                colorscale: [[0, 'rgb(255, 100, 0)'], [1, 'rgb(0, 155, 255)']]
+                colorscale: [[0, 'rgb(79, 79, 164)'], [1, 'rgb(212, 200, 186)']]
+                //colorscale: [[0, 'rgb(66, 27, 148)'], [1, 'rgb(212, 202, 187)']]
+                //colorscale: [[0, 'rgb(88, 0, 148)'], [1, 'rgb(137, 207, 176)'], [2, 'rgb(201, 231, 135)'], [3, 'rgb(212, 202, 187)']]
+              
               }
     };
 
