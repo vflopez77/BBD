@@ -126,7 +126,6 @@ function buildCharts(sample) {
       xaxis: { title: "OTU ID"}
     };
 
-
     // 3. Use Plotly to plot the data with the layout.
     var bubbleData = [bubData]
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
