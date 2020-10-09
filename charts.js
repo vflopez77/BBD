@@ -99,6 +99,6 @@ function buildCharts(sample) {
     //  yaxis: { title: "" }
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar-plot", data, barLayout);x
+    Plotly.newPlot("bar-plot", data, barLayout);
   });
 }
