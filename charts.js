@@ -74,10 +74,7 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
     var yticks = otu_ids.slice(0,10).map(otu_id => otu_id = "OTU " + otu_id).reverse();
-    //yticks.reverse()
-    //var xticks = sample_values.slice(0,10).sort((a, b) => a - b);
     var xticks = sample_values.slice(0,10).reverse()
-    //xticks.reverse()
     console.log(yticks);
     console.log(xticks);
 
@@ -102,6 +99,6 @@ function buildCharts(sample) {
     //  yaxis: { title: "" }
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar-plot", data, barLayout);
+    Plotly.newPlot("bar-plot", data, barLayout);x
   });
 }
