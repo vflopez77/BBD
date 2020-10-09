@@ -4,7 +4,7 @@ function init() {
 
   // Use the list of sample names to populate the select options
   d3.json("samples.json").then((data) => {
-    //console.log(data);
+    console.log(data);
     var sampleNames = data.names;
 
     sampleNames.forEach((sample) => {
@@ -51,7 +51,9 @@ function buildMetadata(sample) {
     Object.entries(result).forEach(([key, value]) => {
       PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
-
+    console.log(result);
+    wfrequency = result.wfreq;
+    console.log(wfrequency);
   });
 }
 
@@ -80,8 +82,6 @@ function buildCharts(sample) {
     //  so the otu_ids with the most bacteria are last. 
     var yticks = otu_ids.slice(0,10).map(otu_id => otu_id = "OTU " + otu_id).reverse();
     var xticks = sample_values.slice(0,10).reverse()
-    console.log(yticks);
-    console.log(xticks);
 
     // 8. Create the trace for the bar chart. 
     var bdata = {
@@ -129,6 +129,43 @@ function buildCharts(sample) {
     // 3. Use Plotly to plot the data with the layout.
     var bubbleData = [bubData]
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+
+    // 4. Create the trace for the gauge chart.
+    console.log(wfrequency);
+    var gaugeData = [{
+      value: wfrequency,
+      title: { text: "Belly Button Washing Frequency" },
+      subtitle: { text: "Scrubs per Week"},
+      type: "indicator",
+      mode: "gauge+number+delta",
+      gauge: {
+        axis: { range: [null, 10]},
+        steps: [
+          { range: [0, 2], color: "red"},
+          { range: [2, 4], color: "orange"},
+          { range: [4, 6], color: "yellow"},
+          { range: [6, 8], color: "lightgreen"},
+          { range: [8, 10], color: "green"}
+        ],
+        threshold: {
+          line: { color: "red", width: 4},
+          thickness: 0.75,
+          value: 2
+        }
+      
+      }
+
+    }];
+    
+    // 5. Create the layout for the gauge chart.
+    var gaugeLayout = { 
+      width: 600,
+      height: 450,
+      margin: { t: 0, b: 0 }
+    };
+
+    // 6. Use Plotly to plot the gauge data and layout.
+    Plotly.newPlot("gauge", gaugeData, gaugeLayout)
 
   });
 }
