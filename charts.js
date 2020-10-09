@@ -84,7 +84,7 @@ function buildCharts(sample) {
     console.log(xticks);
 
     // 8. Create the trace for the bar chart. 
-    var data = {
+    var bdata = {
         x: xticks,
         y: yticks,
         text: otu_labels.slice(0, 10).reverse(),
@@ -93,7 +93,7 @@ function buildCharts(sample) {
         orientation: "h"
     };
 
-    var barData = [data];
+    var barData = [bdata];
     
     // 9. Create the layout for the bar chart. 
     var barLayout = {
@@ -105,17 +105,28 @@ function buildCharts(sample) {
     Plotly.newPlot("bar-plot", barData, barLayout);
 
     // 1. Create the trace for the bubble chart.
-    var bubbleData = [
-
-    ];
+    var bubData = {
+      x: otu_ids,
+      y: sample_values,
+      text: otu_labels,
+      type: 'scatter',
+      mode: 'markers',
+      marker: { size: sample_values,
+                color: otu_ids,
+                colorscale: [[0, 'rgb(255, 100, 0)'], [1, 'rgb(0, 155, 255)']]
+              }
+    };
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
-      
+      title: "Bacteria Culters Per Sample",
+      xaxis: { title: "OTU ID"}
     };
 
+
     // 3. Use Plotly to plot the data with the layout.
-        
+    var bubbleData = [bubData]
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
   });
 }
