@@ -93,7 +93,7 @@ function buildCharts(sample) {
         orientation: "h"
     };
 
-    var BarData = [data];
+    var barData = [data];
     
     // 9. Create the layout for the bar chart. 
     var barLayout = {
