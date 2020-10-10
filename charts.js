@@ -29,7 +29,7 @@ function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
   buildMetadata(newSample);
   buildCharts(newSample);
-  
+
 }
 
 // Demographics Panel 
@@ -98,7 +98,9 @@ function buildCharts(sample) {
     
     // 9. Create the layout for the bar chart. 
     var barLayout = {
-      title: "Top Ten Bacteria Cultures Found"
+      title: "<b>Top Ten Bacteria Cultures Found</b>",
+      margin: { t: 40, b: 30 },
+      height: 380
     //  xaxis: { title: "" },
     //  yaxis: { title: "" }
     };
@@ -115,13 +117,12 @@ function buildCharts(sample) {
       marker: { size: sample_values,
                 color: otu_ids,
                 colorscale: "Viridis"
-              
               }
     };
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
-      title: "Bacteria Cultures Per Sample",
+      title: "<b>Bacteria Cultures Per Sample</b>",
       xaxis: { title: "OTU ID"}
     };
 
@@ -145,16 +146,14 @@ function buildCharts(sample) {
           { range: [6, 8], color: "lightgreen"},
           { range: [8, 10], color: "green"}
         ]
-      
       }
-
     }];
-    
+
     // 5. Create the layout for the gauge chart.
     var gaugeLayout = { 
-      width: 500,
-      height: 450,
-      margin: { t: 0, b: 0 }
+      width: 455,
+      height: 380,
+      margin: { t: 60, b: 0 }
     };
 
     // 6. Use Plotly to plot the gauge data and layout.
