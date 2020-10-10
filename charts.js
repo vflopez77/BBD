@@ -100,7 +100,7 @@ function buildCharts(sample) {
     var barLayout = {
       title: "<b>Top Ten Bacteria Cultures Found</b>",
       margin: { t: 40, b: 30 },
-      height: 380
+      height: 368
     //  xaxis: { title: "" },
     //  yaxis: { title: "" }
     };
@@ -152,7 +152,7 @@ function buildCharts(sample) {
     // 5. Create the layout for the gauge chart.
     var gaugeLayout = { 
       width: 455,
-      height: 380,
+      height: 368,
       margin: { t: 60, b: 0 }
     };
 
