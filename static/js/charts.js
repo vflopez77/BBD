@@ -105,7 +105,7 @@ function buildCharts(sample) {
     //  yaxis: { title: "" }
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar-plot", barData, barLayout);
+    Plotly.newPlot("bar-plot", barData, barLayout, {displayModeBar: false});
 
     // 1. Create the trace for the bubble chart.
     var bubData = {
