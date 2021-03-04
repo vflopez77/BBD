@@ -133,7 +133,7 @@ function buildCharts(sample) {
     // 4. Create the trace for the gauge chart.
     var gaugeData = [{
       value: wfrequency,
-      title: { text: "<b>Belly Button Washing Frequency</b><br>Scrubs per Week" },
+      title: { text: "<b>Navel Washing Frequency</b><br>Scrubs per Week" },
       type: "indicator",
       mode: "gauge+number",
       gauge: {
